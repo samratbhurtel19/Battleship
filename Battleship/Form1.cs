@@ -61,7 +61,7 @@ namespace Battleship
                 for (int j = 1; j <= BS.MAX_BOARD_SIZE; j++)
                 {
                     Label lbl = new Label();
-                    lbl.BackColor = Color.FromArgb(65, 255, 255, 255);
+                    lbl.BackColor = Color.FromArgb(100, 255, 255, 255);
                     lbl.Size = new Size(Settings.SIZE, Settings.SIZE);
                     lbl.Location = new Point(Settings.LOCATION * (j - 1), Settings.LOCATION * (i - 1)); // Corrected Location setting
                     lbl.BorderStyle = BorderStyle.FixedSingle;

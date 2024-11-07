@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Battleship
@@ -36,11 +37,6 @@ namespace Battleship
             this.lblBattleship = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlBoatStatuses = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.nudTurnsTaken = new System.Windows.Forms.NumericUpDown();
             this.lblBoatDestroyer = new System.Windows.Forms.Label();
             this.lblBoatSubmarine = new System.Windows.Forms.Label();
@@ -54,6 +50,11 @@ namespace Battleship
             this.lblBattleshipBoat = new System.Windows.Forms.Label();
             this.lblCarrier = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlGame = new System.Windows.Forms.Panel();
             this.lblXcoordinates = new System.Windows.Forms.Label();
             this.lblYcoordinates = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@ namespace Battleship
             // 
             // pnlBoatStatuses
             // 
+            this.pnlBoatStatuses.AutoSize = true;
             this.pnlBoatStatuses.BackColor = System.Drawing.Color.Transparent;
             this.pnlBoatStatuses.Controls.Add(this.nudTurnsTaken);
             this.pnlBoatStatuses.Controls.Add(this.lblBoatDestroyer);
@@ -119,51 +121,10 @@ namespace Battleship
             this.pnlBoatStatuses.Controls.Add(this.lblBattleshipBoat);
             this.pnlBoatStatuses.Controls.Add(this.lblCarrier);
             this.pnlBoatStatuses.Controls.Add(this.label2);
-            this.pnlBoatStatuses.Location = new System.Drawing.Point(605, 283);
+            this.pnlBoatStatuses.Location = new System.Drawing.Point(579, 284);
             this.pnlBoatStatuses.Name = "pnlBoatStatuses";
-            this.pnlBoatStatuses.Size = new System.Drawing.Size(265, 229);
+            this.pnlBoatStatuses.Size = new System.Drawing.Size(279, 229);
             this.pnlBoatStatuses.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(154, 180);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 16);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "label6";
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(154, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 16);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "label5";
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(154, 116);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 16);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "label4";
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(154, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 16);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "label3";
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(154, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 16);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label_Click);
             // 
             // nudTurnsTaken
             // 
@@ -174,42 +135,42 @@ namespace Battleship
             // 
             // lblBoatDestroyer
             // 
-            this.lblBoatDestroyer.AutoSize = true;
-            this.lblBoatDestroyer.Location = new System.Drawing.Point(90, 164);
+            this.lblBoatDestroyer.BackColor = System.Drawing.Color.Green;
+            this.lblBoatDestroyer.Location = new System.Drawing.Point(134, 180);
             this.lblBoatDestroyer.Name = "lblBoatDestroyer";
-            this.lblBoatDestroyer.Size = new System.Drawing.Size(0, 16);
+            this.lblBoatDestroyer.Size = new System.Drawing.Size(101, 16);
             this.lblBoatDestroyer.TabIndex = 12;
             // 
             // lblBoatSubmarine
             // 
-            this.lblBoatSubmarine.AutoSize = true;
-            this.lblBoatSubmarine.Location = new System.Drawing.Point(90, 132);
+            this.lblBoatSubmarine.BackColor = System.Drawing.Color.Green;
+            this.lblBoatSubmarine.Location = new System.Drawing.Point(134, 148);
             this.lblBoatSubmarine.Name = "lblBoatSubmarine";
-            this.lblBoatSubmarine.Size = new System.Drawing.Size(0, 16);
+            this.lblBoatSubmarine.Size = new System.Drawing.Size(101, 16);
             this.lblBoatSubmarine.TabIndex = 11;
             // 
             // lblBoatCruiser
             // 
-            this.lblBoatCruiser.AutoSize = true;
-            this.lblBoatCruiser.Location = new System.Drawing.Point(90, 101);
+            this.lblBoatCruiser.BackColor = System.Drawing.Color.Green;
+            this.lblBoatCruiser.Location = new System.Drawing.Point(134, 116);
             this.lblBoatCruiser.Name = "lblBoatCruiser";
-            this.lblBoatCruiser.Size = new System.Drawing.Size(0, 16);
+            this.lblBoatCruiser.Size = new System.Drawing.Size(101, 16);
             this.lblBoatCruiser.TabIndex = 10;
             // 
             // lblBoatBattleship
             // 
-            this.lblBoatBattleship.AutoSize = true;
-            this.lblBoatBattleship.Location = new System.Drawing.Point(90, 70);
+            this.lblBoatBattleship.BackColor = System.Drawing.Color.Green;
+            this.lblBoatBattleship.Location = new System.Drawing.Point(134, 85);
             this.lblBoatBattleship.Name = "lblBoatBattleship";
-            this.lblBoatBattleship.Size = new System.Drawing.Size(0, 16);
+            this.lblBoatBattleship.Size = new System.Drawing.Size(101, 16);
             this.lblBoatBattleship.TabIndex = 9;
             // 
             // lblBoatCarrier
             // 
-            this.lblBoatCarrier.AutoSize = true;
-            this.lblBoatCarrier.Location = new System.Drawing.Point(90, 33);
+            this.lblBoatCarrier.BackColor = System.Drawing.Color.Green;
+            this.lblBoatCarrier.Location = new System.Drawing.Point(134, 49);
             this.lblBoatCarrier.Name = "lblBoatCarrier";
-            this.lblBoatCarrier.Size = new System.Drawing.Size(0, 16);
+            this.lblBoatCarrier.Size = new System.Drawing.Size(101, 16);
             this.lblBoatCarrier.TabIndex = 8;
             // 
             // lblTurnsTaken
@@ -290,10 +251,51 @@ namespace Battleship
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(262, 33);
+            this.label2.Size = new System.Drawing.Size(276, 33);
             this.label2.TabIndex = 0;
             this.label2.Text = "Boat Stasuses";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(154, 180);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 16);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "label6";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(154, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 16);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "label5";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(154, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(154, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 16);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "label3";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(154, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 16);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label_Click);
             // 
             // pnlGame
             // 
