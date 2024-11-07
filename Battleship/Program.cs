@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Purpose: Main entry point for the application.
+// Creator: Samrat Jayanta Bhurtel
+// Student ID: 100949545
+// Title: Program.cs
+// Date: 2024/11/04
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +23,7 @@ namespace Battleship
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new battleshipMainForm());
         }
     }
 }

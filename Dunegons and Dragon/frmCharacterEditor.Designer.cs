@@ -382,6 +382,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmCharacterEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Character Editor";
             this.ResumeLayout(false);
             this.PerformLayout();

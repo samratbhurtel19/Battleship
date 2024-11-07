@@ -80,6 +80,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblName);
             this.Name = "frmSplashScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dunegons and Dragons - Samrat Jayanta Bhurtel";
             this.ResumeLayout(false);
             this.PerformLayout();

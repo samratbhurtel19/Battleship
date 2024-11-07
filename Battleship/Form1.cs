@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Title: battleshipMainForm
+// Author Name: Samrat Jayanta Bhurtel
+// Student ID: 100949545
+// Starting Date: 2024/11/01
+// Description: This is the main form of the Battleship game. It contains the main logic of the game.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,13 +16,15 @@ using static Battleship.BS;
 
 namespace Battleship
 {
-    public partial class Form1 : Form
+    public partial class battleshipMainForm : Form
     {
-        public Form1()
+        public battleshipMainForm()
         {
             InitializeComponent();
         }
-        // Methods to set initial (default) 
+        /// <summary>
+        /// Methods to set initial (default)
+        /// </summary>        
         private void SetInitials()
         {
             pnlBoatStatuses.Visible = false;
@@ -30,17 +37,20 @@ namespace Battleship
             cmbxX.Items.Clear();
             cmbxY.SelectedValue = 0;
             cmbxY.Items.Clear();
+
+            // Set each boat status label to green to indicate they are alive
             lblBoatCarrier.BackColor = Color.Green;
             lblBoatBattleship.BackColor = Color.Green;
             lblBoatCruiser.BackColor = Color.Green;
             lblBoatSubmarine.BackColor = Color.Green;
             lblBoatDestroyer.BackColor = Color.Green;
+
             nudTurnsTaken.Value = 0;
             Settings.turnsTaken = 0;
             btnShoot.Visible = false;
-            pnlBoatStatuses.BackColor = Color.FromArgb(90, 0, 0, 0);
-
+            pnlBoatStatuses.BackColor = Color.FromArgb(150, 0, 0, 0);
         }
+
         /// <summary>
         /// Method to set the grid
         /// </summary>
@@ -53,20 +63,20 @@ namespace Battleship
                     Label lbl = new Label();
                     lbl.BackColor = Color.FromArgb(65, 255, 255, 255);
                     lbl.Size = new Size(Settings.SIZE, Settings.SIZE);
-                    Location = new Point(Settings.LOCATION * i, Settings.LOCATION * j);
+                    lbl.Location = new Point(Settings.LOCATION * (j - 1), Settings.LOCATION * (i - 1)); // Corrected Location setting
                     lbl.BorderStyle = BorderStyle.FixedSingle;
                     lbl.TextAlign = ContentAlignment.MiddleCenter;
                     lbl.Text = $"{i}, {j}";
                     lbl.Click += new EventHandler(lbl_Click);
                     Settings.lbls[i, j] = lbl;
-
                 }
-
             }
         }
+
         /// <summary>
         /// Methods to show the labels on the grid
-        /// 
+        /// </summary>
+      
         private void ShowLabels()
         {
             pnlGame.Controls.Clear();
@@ -82,8 +92,8 @@ namespace Battleship
             pnlGame.Visible = true;
         }
         /// <summary>
-        /// Method to populate the X and Y coordinates
         /// 
+        /// </summary>
         private void PopulateCoordinates()
         {
 
@@ -96,8 +106,8 @@ namespace Battleship
             cmbxY.SelectedIndex = 0;
         }
         /// <summary>
-        /// Method to update sunk boats
-        /// 
+        /// Method to update the sunk boats and to check the boat is still Alive
+        /// </summary>
         private void UpdateSunkBoats()
         {
             var boatsAlive = BS.BoatsAlive();
@@ -126,28 +136,12 @@ namespace Battleship
             }
 
         }
-        /// Method for Boat hit sound
-        /// 
 
-        public void PlayBoatHitSound()
-        {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.Stream = Properties.Resources.BoatHit;
-            player.Play();
-        }
-
-        /// <summary>
-        ///
-        public static void PlayMissSound()
-        {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.Stream = Properties.Resources.Miss;
-            player.Play();
-        }
 
 
         /// </summary>
         /// <param name="sender"></param>
+        /// Method if the player wants to exit the game.
         /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -156,14 +150,18 @@ namespace Battleship
                 Application.Exit();
             }
         }
-
+        /// <summary>
+        /// Method to reset the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReset_Click(object sender, EventArgs e)
         {
             SetInitials();
         }
 
         /// <summary>
-        /// 
+        /// Methods for New Game.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -185,7 +183,10 @@ namespace Battleship
         }
 
         /// <summary>
-        /// 
+        /// Method to handle the click event of the labels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbl_Click(object sender, EventArgs e)
         {
             Label lbl = (Label)sender;
@@ -197,12 +198,11 @@ namespace Battleship
                 int y = int.Parse(coordinates[1]);
                 if (BS.MissileHit(x, y))
                 {
-                    PlayBoatHitSound();
                     lbl.BackColor = Color.Red;
                 }
                 else
                 {
-                    PlayMissSound();
+                    
                     lbl.BackColor = Color.Blue;
                 }
                 Settings.turnsTaken++;
@@ -217,7 +217,11 @@ namespace Battleship
             }
 
         }
-
+        /// <summary>
+        /// Method to handle the click event of the shoot button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnShoot_Click(object sender, EventArgs e)
         {
             if (cmbxX.SelectedIndex != null && cmbxY.SelectedIndex !=null)
@@ -226,12 +230,12 @@ namespace Battleship
                 int y = cmbxY.SelectedIndex + 1;
                 if (BS.MissileHit(x, y))
                 {
-                    PlayBoatHitSound();
+                    
                     Settings.lbls[x, y].BackColor = Color.Red;
                 }
                 else
                 {
-                    PlayMissSound();
+                   
                     Settings.lbls[x, y].BackColor = Color.Blue;
                 }
                 Settings.turnsTaken++;
@@ -250,6 +254,7 @@ namespace Battleship
                 return;
             }
         }
+
     }
 }
     

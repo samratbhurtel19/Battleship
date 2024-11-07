@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Title: BS_Student.cs
+// Author Name: Samrat Jayanta Bhurtel
+// Student ID: 100949545
+// Starting Date: 2024/11/05
+// Description: This is the student's file to implement the Battleship game logic.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
