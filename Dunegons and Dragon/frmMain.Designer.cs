@@ -28,57 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lbxCharacter = new System.Windows.Forms.ListBox();
+            this.btnCreateCharacter = new System.Windows.Forms.Button();
+            this.btnEditCharacter = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lbxCharacter
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(291, 103);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(198, 148);
-            this.listBox1.TabIndex = 0;
+            this.lbxCharacter.FormattingEnabled = true;
+            this.lbxCharacter.ItemHeight = 16;
+            this.lbxCharacter.Location = new System.Drawing.Point(291, 103);
+            this.lbxCharacter.Name = "lbxCharacter";
+            this.lbxCharacter.Size = new System.Drawing.Size(198, 148);
+            this.lbxCharacter.TabIndex = 0;
             // 
-            // button1
+            // btnCreateCharacter
             // 
-            this.button1.Location = new System.Drawing.Point(89, 306);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 74);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCreateCharacter.Location = new System.Drawing.Point(89, 306);
+            this.btnCreateCharacter.Name = "btnCreateCharacter";
+            this.btnCreateCharacter.Size = new System.Drawing.Size(136, 74);
+            this.btnCreateCharacter.TabIndex = 1;
+            this.btnCreateCharacter.Text = "Create Character";
+            this.btnCreateCharacter.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnEditCharacter
             // 
-            this.button2.Location = new System.Drawing.Point(317, 306);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 74);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEditCharacter.Location = new System.Drawing.Point(324, 306);
+            this.btnEditCharacter.Name = "btnEditCharacter";
+            this.btnEditCharacter.Size = new System.Drawing.Size(102, 74);
+            this.btnEditCharacter.TabIndex = 2;
+            this.btnEditCharacter.Text = "Edit Character";
+            this.btnEditCharacter.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnExit
             // 
-            this.button3.Location = new System.Drawing.Point(518, 306);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 74);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(534, 306);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(101, 74);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 525);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnEditCharacter);
+            this.Controls.Add(this.btnCreateCharacter);
+            this.Controls.Add(this.lbxCharacter);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
@@ -88,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox lbxCharacter;
+        private System.Windows.Forms.Button btnCreateCharacter;
+        private System.Windows.Forms.Button btnEditCharacter;
+        private System.Windows.Forms.Button btnExit;
     }
 }

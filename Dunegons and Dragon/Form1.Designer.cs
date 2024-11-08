@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCourse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -37,47 +37,57 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(77, 102);
+            this.lblName.BackColor = System.Drawing.Color.IndianRed;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(23, 164);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(145, 16);
+            this.lblName.Size = new System.Drawing.Size(533, 54);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Samrat Jayanta Bhurtel";
             // 
-            // label1
+            // lblCourse
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 171);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "COSC-OOP2";
+            this.lblCourse.AutoSize = true;
+            this.lblCourse.BackColor = System.Drawing.Color.IndianRed;
+            this.lblCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCourse.Location = new System.Drawing.Point(23, 260);
+            this.lblCourse.Name = "lblCourse";
+            this.lblCourse.Size = new System.Drawing.Size(315, 54);
+            this.lblCourse.TabIndex = 1;
+            this.lblCourse.Text = "COSC-OOP2";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 253);
+            this.label2.BackColor = System.Drawing.Color.IndianRed;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 349);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 16);
+            this.label2.Size = new System.Drawing.Size(423, 54);
             this.label2.TabIndex = 2;
             this.label2.Text = "November 5, 2024";
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(353, 444);
+            this.btnNext.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Location = new System.Drawing.Point(299, 430);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.Size = new System.Drawing.Size(123, 61);
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.UseVisualStyleBackColor = false;
             // 
             // frmSplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Dunegons_and_Dragon.Properties.Resources.download;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 560);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCourse);
             this.Controls.Add(this.lblName);
             this.Name = "frmSplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -90,7 +100,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNext;
     }

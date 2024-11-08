@@ -309,10 +309,11 @@ namespace Battleship
             // 
             this.lblXcoordinates.AutoSize = true;
             this.lblXcoordinates.BackColor = System.Drawing.SystemColors.InfoText;
+            this.lblXcoordinates.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblXcoordinates.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblXcoordinates.Location = new System.Drawing.Point(609, 98);
+            this.lblXcoordinates.Location = new System.Drawing.Point(598, 98);
             this.lblXcoordinates.Name = "lblXcoordinates";
-            this.lblXcoordinates.Size = new System.Drawing.Size(93, 16);
+            this.lblXcoordinates.Size = new System.Drawing.Size(107, 16);
             this.lblXcoordinates.TabIndex = 6;
             this.lblXcoordinates.Text = "X co-ordinates";
             // 
@@ -320,10 +321,11 @@ namespace Battleship
             // 
             this.lblYcoordinates.AutoSize = true;
             this.lblYcoordinates.BackColor = System.Drawing.SystemColors.ControlText;
+            this.lblYcoordinates.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYcoordinates.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblYcoordinates.Location = new System.Drawing.Point(608, 129);
+            this.lblYcoordinates.Location = new System.Drawing.Point(598, 129);
             this.lblYcoordinates.Name = "lblYcoordinates";
-            this.lblYcoordinates.Size = new System.Drawing.Size(94, 16);
+            this.lblYcoordinates.Size = new System.Drawing.Size(108, 16);
             this.lblYcoordinates.TabIndex = 7;
             this.lblYcoordinates.Text = "Y co-ordinates";
             // 
