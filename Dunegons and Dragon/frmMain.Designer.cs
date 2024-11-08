@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbxCharacter = new System.Windows.Forms.ListBox();
+            this.lstCharacters = new System.Windows.Forms.ListBox();
             this.btnCreateCharacter = new System.Windows.Forms.Button();
             this.btnEditCharacter = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lbxCharacter
+            // lstCharacters
             // 
-            this.lbxCharacter.FormattingEnabled = true;
-            this.lbxCharacter.ItemHeight = 16;
-            this.lbxCharacter.Location = new System.Drawing.Point(291, 103);
-            this.lbxCharacter.Name = "lbxCharacter";
-            this.lbxCharacter.Size = new System.Drawing.Size(198, 148);
-            this.lbxCharacter.TabIndex = 0;
+            this.lstCharacters.FormattingEnabled = true;
+            this.lstCharacters.ItemHeight = 16;
+            this.lstCharacters.Location = new System.Drawing.Point(291, 103);
+            this.lstCharacters.Name = "lstCharacters";
+            this.lstCharacters.Size = new System.Drawing.Size(198, 148);
+            this.lstCharacters.TabIndex = 0;
             // 
             // btnCreateCharacter
             // 
@@ -51,6 +51,7 @@
             this.btnCreateCharacter.TabIndex = 1;
             this.btnCreateCharacter.Text = "Create Character";
             this.btnCreateCharacter.UseVisualStyleBackColor = true;
+            this.btnCreateCharacter.Click += new System.EventHandler(this.btnCreateCharacter_Click);
             // 
             // btnEditCharacter
             // 
@@ -60,6 +61,7 @@
             this.btnEditCharacter.TabIndex = 2;
             this.btnEditCharacter.Text = "Edit Character";
             this.btnEditCharacter.UseVisualStyleBackColor = true;
+            this.btnEditCharacter.Click += new System.EventHandler(this.btnEditCharacter_Click);
             // 
             // btnExit
             // 
@@ -69,6 +71,7 @@
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmMain
             // 
@@ -78,7 +81,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnEditCharacter);
             this.Controls.Add(this.btnCreateCharacter);
-            this.Controls.Add(this.lbxCharacter);
+            this.Controls.Add(this.lstCharacters);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
@@ -88,7 +91,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lbxCharacter;
+        private System.Windows.Forms.ListBox lstCharacters;
         private System.Windows.Forms.Button btnCreateCharacter;
         private System.Windows.Forms.Button btnEditCharacter;
         private System.Windows.Forms.Button btnExit;
