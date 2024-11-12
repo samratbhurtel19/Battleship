@@ -236,7 +236,7 @@ namespace Battleship
                 else
                 {
                    
-                    Settings.lbls[x, y].BackColor = Color.Blue;
+                     Settings.lbls[x, y].BackColor = Color.Blue;
                 }
                 Settings.turnsTaken++;
                 nudTurnsTaken.Value = Settings.turnsTaken;
