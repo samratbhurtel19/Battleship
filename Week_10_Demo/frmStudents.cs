@@ -22,5 +22,11 @@ namespace Week_10_Demo
         {
 
         }
+
+        private void btnDB_Click(object sender, EventArgs e)
+        {
+            frmDB frm = new frmDB();
+            frm.ShowDialog();
+        }
     }
 }

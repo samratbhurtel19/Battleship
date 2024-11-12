@@ -37,13 +37,15 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDB = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.employeeSampleDataSet = new Week_10_Demo.employeeSampleDataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeSampleDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // cboStudents
@@ -119,14 +121,15 @@
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnDB
             // 
-            this.button2.Location = new System.Drawing.Point(626, 408);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Database";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDB.Location = new System.Drawing.Point(626, 408);
+            this.btnDB.Name = "btnDB";
+            this.btnDB.Size = new System.Drawing.Size(75, 23);
+            this.btnDB.TabIndex = 9;
+            this.btnDB.Text = "Database";
+            this.btnDB.UseVisualStyleBackColor = true;
+            this.btnDB.Click += new System.EventHandler(this.btnDB_Click);
             // 
             // button3
             // 
@@ -136,15 +139,6 @@
             this.button3.TabIndex = 10;
             this.button3.Text = "Exit";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 11;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // button4
             // 
@@ -182,18 +176,32 @@
             this.button7.Text = ">|";
             this.button7.UseVisualStyleBackColor = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 523);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 16;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // employeeSampleDataSet
+            // 
+            this.employeeSampleDataSet.DataSetName = "employeeSampleDataSet";
+            this.employeeSampleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // frmStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 545);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDB);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -204,7 +212,8 @@
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.cboStudents);
             this.Name = "frmStudents";
-            this.Text = "Form1";
+            this.Text = " ";
+            ((System.ComponentModel.ISupportInitialize)(this.employeeSampleDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,13 +230,14 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDB;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private employeeSampleDataSet employeeSampleDataSet;
     }
 }
 
