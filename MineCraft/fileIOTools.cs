@@ -13,7 +13,10 @@ using System.Xml;
 
 namespace MineCraft
 {
-        public static class fileIOTools
+    /// <summary>
+    /// This class contains static methods for reading and writing player profiles to and from files.
+    /// </summary>
+    public static class fileIOTools
         {
             public static void SaveProfile(string filePath, PlayerProfile profile)
             {
@@ -47,8 +50,13 @@ namespace MineCraft
                     throw new ApplicationException("Failed to save profile to file.", ex);
                 }
             }
-
-            public static PlayerProfile LoadProfile(string filePath)
+        /// <summary>
+        /// This method reads a player profile from a file and returns it as a PlayerProfile object.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        /// <exception cref="ApplicationException"></exception>
+        public static PlayerProfile LoadProfile(string filePath)
             {
                 try
                 {

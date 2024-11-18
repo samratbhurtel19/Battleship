@@ -23,7 +23,11 @@ namespace MineCraft
             // Start the timer when the splash screen loads
             timer1.Start();
         }
-
+        /// <summary>
+        /// This method is called when the timer ticks. It stops the timer and opens the main form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             // Stop the timer

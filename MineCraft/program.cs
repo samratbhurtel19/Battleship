@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace MineCraft
 {
+    /// <summary>
+    /// The main entry point for the application. It shows the splash screen and then opens the main form.
+    /// </summary>
     static class Program
     {
         [STAThread]

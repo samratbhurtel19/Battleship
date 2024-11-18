@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace MineCraft
 {
+    /// <summary>
+    /// This class represents a player profile with various settings and preferences.
+    /// </summary>
     public class PlayerProfile
     {
         public string ProfileName { get; set; }

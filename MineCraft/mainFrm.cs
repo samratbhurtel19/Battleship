@@ -23,7 +23,11 @@ namespace MineCraft
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// This method is called when the "Save Profile" button is clicked. It saves the profile data to a file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveProfile_Click(object sender, EventArgs e)
         {
             try
@@ -71,7 +75,11 @@ namespace MineCraft
                 MessageBox.Show($"Error saving profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// This method is called when the "Load Profile" button is clicked. It loads the profile data from a file and populates the UI controls.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLoadProfile_Click(object sender, EventArgs e)
         {
             try
@@ -119,7 +127,11 @@ namespace MineCraft
                 MessageBox.Show($"Error loading profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// This method is called when the "Set Default" button is clicked. It sets the selected profile as the default profile.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSetDefault_Click(object sender, EventArgs e)
         {
             try
@@ -144,7 +156,11 @@ namespace MineCraft
                 MessageBox.Show($"Error setting default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mainFrm_Load(object sender, EventArgs e)
         {
             try
@@ -169,6 +185,9 @@ namespace MineCraft
                         MessageBox.Show($"Error loading default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+        /// <summary>
+        /// This method refreshes the profile list in the ComboBox.
+        /// </summary>
         private void RefreshProfileList()
         {
             try
