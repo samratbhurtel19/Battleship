@@ -208,6 +208,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeesBindingSource, "firstName", true));
             this.textBox1.Location = new System.Drawing.Point(193, 137);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
@@ -215,6 +216,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeesBindingSource, "lastName", true));
             this.textBox2.Location = new System.Drawing.Point(193, 165);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
