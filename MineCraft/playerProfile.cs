@@ -3,7 +3,6 @@
 // Name: Samrat Jayanta Bhurtel
 // Student ID: 100949545
 // Date: 13th November 2024
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,65 +13,38 @@ using System.Threading.Tasks;
 
 namespace MineCraft
 {
-    public class playerProfile
+    public class PlayerProfile
     {
+        public string ProfileName { get; set; }
+        public string InputDevice { get; set; } = "Keyboard";
+        public bool AutoJump { get; set; } = true;
+        public int MouseSensitivity { get; set; } = 50;
+        public int ControllerSensitivity { get; set; } = 50;
+        public bool InvertYAxis { get; set; } = false;
+        public int Brightness { get; set; } = 50;
+        public bool FancyGraphics { get; set; } = true;
+        public bool VSync { get; set; } = true;
+        public bool Fullscreen { get; set; } = false;
+        public int RenderDistance { get; set; } = 16;
+        public int FieldOfView { get; set; } = 64;
+        public bool RayTracing { get; set; } = false;
+        public bool Upscaling { get; set; } = false;
+        public int MusicVolume { get; set; } = 100;
+        public int SoundVolume { get; set; } = 100;
+        public int HUDTransparency { get; set; } = 100;
+        public bool ShowCoordinates { get; set; } = false;
+        public string CameraPerspective { get; set; } = "First-person";
 
-            // Create an instantiable class for player profiles
-            public class PlayerProfile
-            {
-                public string txtProfileName { get; set; } // Unique name for each profile
-
-                public enum InputDevices
-                {
-                    Keyboard,
-                    Controller,
-                    Touch
-                }
-
-                public enum CameraPerspectives
-                {
-                    FirstPerson,
-                    ThirdPersonFront,
-                    ThirdPersonBack
-                }
-
-                // Movement Properties
-                public InputDevices cbxInputDevice { get; set; } = InputDevices.Keyboard;
-                public bool cbxAutoJump { get; set; } = true; // Default: On
-                public int nudMouseSensitivity { get; set; } = 50; // Default: 50
-                public int nudControllerSensitivity { get; set; } = 50; // Default: 50
-                public bool cbxYaxis { get; set; } = false; // Default: Off
-
-                // Video Properties
-                public int nudBrightness { get; set; } = 50; // Default: 50
-                public bool cbxFancyGraphics { get; set; } = true; // Default: On
-                public bool cbxVsync { get; set; } = true; // Default: On
-                public bool cbxFullScreen { get; set; } = false; // Default: Off
-                public int nudRenderDistance { get; set; } = 16; // Default: 16
-                public int nudFieldofView { get; set; } = 64; // Default: 64
-                public bool cbxRayTracing { get; set; } = false; // Default: Off
-                public bool cbxUpscaling { get; set; } = false; // Default: Off
-
-                // Audio Properties
-                public int trckbrMusicVolume { get; set; } = 100; // Default: 100
-                public int trckbrSoundVolume { get; set; } = 100; // Default: 100
-
-                // Interface Properties
-                public int nudTransparency { get; set; } = 100; // Default: 100
-                public bool cbxShowCoordinates { get; set; } = false; // Default: Off
-                public CameraPerspectives cbxCameraPerspective { get; set; } = CameraPerspectives.FirstPerson; // Default: First-person
-
-                // Step 3: Create a method to build the string output for saving
-                public string ToProfileString()
-                {
-                    return $"txtProfileName={txtProfileName}, cbxInputDevice={cbxInputDevice}, cbxAutoJump={cbxAutoJump}, " +
-                           $"nudMouseSensitivity={nudMouseSensitivity}, nudControllerSensitivity={nudControllerSensitivity}, " +
-                           $"cbxYaxis={cbxYaxis}, nudBrightness={nudBrightness}, cbxFancyGraphics={cbxFancyGraphics}, " +
-                           $"cbxVsync={cbxVsync}, cbxFullScreen={cbxFullScreen}, nudRenderDistance={nudRenderDistance}, " +
-                           $"nudFieldofView={nudFieldofView}, cbxRayTracing={cbxRayTracing}, cbxUpscaling={cbxUpscaling}, " +
-                           $"trckbrMusicVolume={trckbrMusicVolume}, trckbrSoundVolume={trckbrSoundVolume}, nudTransparency={nudTransparency}, " +
-                           $"cbxShowCoordinates={cbxShowCoordinates}, cbxCameraPerspective={cbxCameraPerspective}";
-                }
-            }
+        // Method to output profile as a string
+        public string ToProfileString()
+        {
+            return $"ProfileName:{ProfileName}, InputDevice:{InputDevice}, AutoJump:{AutoJump}, " +
+                   $"MouseSensitivity:{MouseSensitivity}, ControllerSensitivity:{ControllerSensitivity}, " +
+                   $"InvertYAxis:{InvertYAxis}, Brightness:{Brightness}, FancyGraphics:{FancyGraphics}, " +
+                   $"VSync:{VSync}, Fullscreen:{Fullscreen}, RenderDistance:{RenderDistance}, " +
+                   $"FieldOfView:{FieldOfView}, RayTracing:{RayTracing}, Upscaling:{Upscaling}, " +
+                   $"MusicVolume:{MusicVolume}, SoundVolume:{SoundVolume}, HUDTransparency:{HUDTransparency}, " +
+                   $"ShowCoordinates:{ShowCoordinates}, CameraPerspective:{CameraPerspective}";
         }
     }
+}

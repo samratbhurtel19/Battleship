@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MineCraft
 {
     public partial class mainFrm : Form
@@ -27,37 +28,47 @@ namespace MineCraft
         {
             try
             {
-                // Create a PlayerProfile object and populate it with data from the UI
-                var profile = new playerProfile.PlayerProfile
+                // Validate profile name
+                if (string.IsNullOrWhiteSpace(txtProfileName.Text))
                 {
-                    txtProfileName = txtProfileName.Text,
-                    cbxInputDevice = (playerProfile.PlayerProfile.InputDevices)cbxInputDevice.SelectedItem,
-                    cbxAutoJump = cbxAutoJump.Checked,
-                    nudMouseSensitivity = (int)nudMouseSensitivity.Value,
-                    nudControllerSensitivity = (int)nudControllerSensitivity.Value,
-                    cbxYaxis = cbxYaxis.Checked,
-                    nudBrightness = (int)nudBrightness.Value,
-                    cbxFancyGraphics = cbxFancyGraphics.Checked,
-                    cbxVsync = cbxVsync.Checked,
-                    cbxFullScreen = cbxFullScreen.Checked,
-                    nudRenderDistance = (int)nudRenderDistance.Value,
-                    nudFieldofView = (int)nudFieldofView.Value,
-                    cbxRayTracing = cbxRayTracing.Checked,
-                    cbxUpscaling = cbxUpscaling.Checked,
-                    trckbrMusicVolume = (int)trckbrMusicVolume.Value,
-                    trckbrSoundVolume = (int)trckbrSoundVolume.Value,
-                    nudTransparency = (int)nudTransparency.Value,
-                    cbxShowCoordinates = cbxShowCoordinates.Checked,
-                    cbxCameraPerspective = (playerProfile.PlayerProfile.CameraPerspectives)cbxCameraPerspective.SelectedItem
+                    MessageBox.Show("Profile name cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Create a PlayerProfile object and populate it with data from the UI
+                var profile = new PlayerProfile
+                {
+                    ProfileName = txtProfileName.Text,
+                    InputDevice = cbxInputDevice.SelectedItem?.ToString() ?? "Keyboard",
+                    AutoJump = cbxAutoJump.Checked,
+                    MouseSensitivity = (int)nudMouseSensitivity.Value,
+                    ControllerSensitivity = (int)nudControllerSensitivity.Value,
+                    InvertYAxis = cbxYaxis.Checked,
+                    Brightness = (int)nudBrightness.Value,
+                    FancyGraphics = cbxFancyGraphics.Checked,
+                    VSync = cbxVsync.Checked,
+                    Fullscreen = cbxFullScreen.Checked,
+                    RenderDistance = (int)nudRenderDistance.Value,
+                    FieldOfView = (int)nudFieldofView.Value,
+                    RayTracing = cbxRayTracing.Checked,
+                    Upscaling = cbxUpscaling.Checked,
+                    MusicVolume = (int)trckbrMusicVolume.Value,
+                    SoundVolume = (int)trckbrSoundVolume.Value,
+                    HUDTransparency = (int)nudTransparency.Value,
+                    ShowCoordinates = cbxShowCoordinates.Checked,
+                    CameraPerspective = cbxCameraPerspective.SelectedItem?.ToString() ?? "First-person"
                 };
 
-                // Save the profile using FileIOTools
-                fileIOTools.SaveProfile($"Profiles/{profile.txtProfileName}.txt", profile);
-                MessageBox.Show("Profile saved successfully!");
+                // Save the profile
+                Directory.CreateDirectory("Profiles");
+                string filePath = $"Profiles/{profile.ProfileName}.txt";
+                fileIOTools.SaveProfile(filePath, profile);
+
+                MessageBox.Show("Profile saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving profile: {ex.Message}");
+                MessageBox.Show($"Error saving profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,39 +76,47 @@ namespace MineCraft
         {
             try
             {
-                // Get the selected profile from the ComboBox
+                if (cbxProfile.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a profile to load.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string profileName = cbxProfile.SelectedItem.ToString();
                 string filePath = $"Profiles/{profileName}.txt";
 
-                // Load the profile using FileIOTools
                 var profile = fileIOTools.LoadProfile(filePath);
 
-                // Update UI controls with the profile data
-                txtProfileName.Text = profile.txtProfileName;
-                cbxInputDevice.SelectedItem = profile.cbxInputDevice;
-                cbxAutoJump.Checked = profile.cbxAutoJump;
-                nudMouseSensitivity.Value = profile.nudMouseSensitivity;
-                nudControllerSensitivity.Value = profile.nudControllerSensitivity;
-                cbxYaxis.Checked = profile.cbxYaxis;
-                nudBrightness.Value = profile.nudBrightness;
-                cbxFancyGraphics.Checked = profile.cbxFancyGraphics;
-                cbxVsync.Checked = profile.cbxVsync;
-                cbxFullScreen.Checked = profile.cbxFullScreen;
-                nudRenderDistance.Value = profile.nudRenderDistance;
-                nudFieldofView.Value = profile.nudFieldofView;
-                cbxRayTracing.Checked = profile.cbxRayTracing;
-                cbxUpscaling.Checked = profile.cbxUpscaling;
-                trckbrMusicVolume.Value = profile.trckbrMusicVolume;
-                trckbrSoundVolume.Value = profile.trckbrSoundVolume;
-                nudTransparency.Value = profile.nudTransparency;
-                cbxShowCoordinates.Checked = profile.cbxShowCoordinates;
-                cbxCameraPerspective.SelectedItem = profile.cbxCameraPerspective;
+                // Update UI controls
+                txtProfileName.Text = profile.ProfileName;
+                cbxInputDevice.SelectedItem = profile.InputDevice;
+                cbxAutoJump.Checked = profile.AutoJump;
+                nudMouseSensitivity.Value = profile.MouseSensitivity;
+                nudControllerSensitivity.Value = profile.ControllerSensitivity;
+                cbxYaxis.Checked = profile.InvertYAxis;
+                nudBrightness.Value = profile.Brightness;
+                cbxFancyGraphics.Checked = profile.FancyGraphics;
+                cbxVsync.Checked = profile.VSync;
+                cbxFullScreen.Checked = profile.Fullscreen;
+                nudRenderDistance.Value = profile.RenderDistance;
+                nudFieldofView.Value = profile.FieldOfView;
+                cbxRayTracing.Checked = profile.RayTracing;
+                cbxUpscaling.Checked = profile.Upscaling;
+                trckbrMusicVolume.Value = profile.MusicVolume;
+                trckbrSoundVolume.Value = profile.SoundVolume;
+                nudTransparency.Value = profile.HUDTransparency;
+                cbxShowCoordinates.Checked = profile.ShowCoordinates;
+                cbxCameraPerspective.SelectedItem = profile.CameraPerspective;
 
-                MessageBox.Show("Profile loaded successfully!");
+                MessageBox.Show("Profile loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (FileNotFoundException fnfEx)
+            {
+                MessageBox.Show($"File not found: {fnfEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading profile: {ex.Message}");
+                MessageBox.Show($"Error loading profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -105,17 +124,24 @@ namespace MineCraft
         {
             try
             {
-                // Get the selected profile from the ComboBox
-                string defaultProfile = cbxProfile.SelectedItem.ToString();
+                if (cbxProfile.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a profile to set as default.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                // Save the default profile name to a configuration file
+                string defaultProfile = cbxProfile.SelectedItem.ToString();
                 File.WriteAllText("Profiles/defaultProfile.txt", defaultProfile);
 
-                MessageBox.Show("Default profile set successfully!");
+                MessageBox.Show("Default profile set successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (UnauthorizedAccessException uaEx)
+            {
+                MessageBox.Show($"Access denied: {uaEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error setting default profile: {ex.Message}");
+                MessageBox.Show($"Error setting default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -123,18 +149,53 @@ namespace MineCraft
         {
             try
             {
-                if (File.Exists("Profiles/defaultProfile.txt"))
+                        // Ensure the Profiles directory exists
+                        Directory.CreateDirectory("Profiles");
+
+                        // Populate the ComboBox with available profiles
+                        RefreshProfileList();
+
+                        // Load the default profile if available
+                        string defaultFilePath = "Profiles/defaultProfile.txt";
+                        if (File.Exists(defaultFilePath))
+                        {
+                            string defaultProfile = File.ReadAllText(defaultFilePath);
+                            cbxProfile.SelectedItem = defaultProfile;
+                            btnLoadProfile_Click(sender, e);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+        private void RefreshProfileList()
+        {
+            try
+            {
+                cbxProfile.Items.Clear(); // Clear existing items
+
+                // Get all profile files in the Profiles directory
+                string[] profileFiles = Directory.GetFiles("Profiles", "*.txt");
+
+                foreach (string file in profileFiles)
                 {
-                    string defaultProfile = File.ReadAllText("Profiles/defaultProfile.txt");
-                    cbxProfile.SelectedItem = defaultProfile;
-                    btnLoadProfile_Click(sender, e);
+                    string profileName = Path.GetFileNameWithoutExtension(file);
+                    cbxProfile.Items.Add(profileName); // Add profile name to ComboBox
+                }
+
+                if (cbxProfile.Items.Count > 0)
+                {
+                    cbxProfile.SelectedIndex = 0; // Set the first item as selected
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading default profile: {ex.Message}");
+                MessageBox.Show($"Error refreshing profile list: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+
     }
 }
+
