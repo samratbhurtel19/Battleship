@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week_10_Demo", "..\Week_10_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCraft", "..\MineCraft\MineCraft.csproj", "{B7C9C496-9A2A-4A29-AED1-AC571F2410A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_w11a_MoreBindingEnheritance", "..\Demo_w11a\Demo_w11a_MoreBindingEnheritance.csproj", "{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_w11a_MoreBindingInheritance", "..\Demo_w11a\Demo_w11a_MoreBindingInheritance.csproj", "{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
