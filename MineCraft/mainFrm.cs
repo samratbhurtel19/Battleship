@@ -168,9 +168,6 @@ namespace MineCraft
                         // Ensure the Profiles directory exists
                         Directory.CreateDirectory("Profiles");
 
-                        // Populate the ComboBox with available profiles
-                        RefreshProfileList();
-
                         // Load the default profile if available
                         string defaultFilePath = "Profiles/defaultProfile.txt";
                         if (File.Exists(defaultFilePath))
@@ -185,34 +182,7 @@ namespace MineCraft
                         MessageBox.Show($"Error loading default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-        /// <summary>
-        /// This method refreshes the profile list in the ComboBox.
-        /// </summary>
-        private void RefreshProfileList()
-        {
-            try
-            {
-                cbxProfile.Items.Clear(); // Clear existing items
 
-                // Get all profile files in the Profiles directory
-                string[] profileFiles = Directory.GetFiles("Profiles", "*.txt");
-
-                foreach (string file in profileFiles)
-                {
-                    string profileName = Path.GetFileNameWithoutExtension(file);
-                    cbxProfile.Items.Add(profileName); // Add profile name to ComboBox
-                }
-
-                if (cbxProfile.Items.Count > 0)
-                {
-                    cbxProfile.SelectedIndex = 0; // Set the first item as selected
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error refreshing profile list: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
 
     }
