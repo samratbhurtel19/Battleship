@@ -23,11 +23,65 @@ namespace MineCraft
         {
             InitializeComponent();
         }
+
         /// <summary>
-        /// This method is called when the "Save Profile" button is clicked. It saves the profile data to a file.
+        /// This method is called when the form loads. It initializes the default profile if available and populates the profiles combo box.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        private void mainFrm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ensure the Profiles directory exists
+                Directory.CreateDirectory("Profiles");
+
+                // Populate profiles in the dropdown
+                PopulateProfiles();
+
+                // Initialize default values for CameraPerspective and other settings
+                cbxCameraPerspective.Items.Clear();
+                cbxCameraPerspective.Items.AddRange(new[] { "First-person", "Third-person Front", "Third-person Back" });
+
+                // Load default profile if available
+                string defaultFilePath = "Profiles/defaultProfile.txt";
+                if (File.Exists(defaultFilePath))
+                {
+                    string defaultProfile = File.ReadAllText(defaultFilePath);
+                    cbxProfile.SelectedItem = defaultProfile;
+                    btnLoadProfile_Click(sender, e);
+                }
+                else
+                {
+                    // Set default input device and other default values if no default profile exists
+                    cbxInputDevice.SelectedItem = "Keyboard";
+                    cbxAutoJump.Checked = true;
+                    nudMouseSensitivity.Value = 50;
+                    nudControllerSensitivity.Value = 50;
+                    cbxYaxis.Checked = false;
+                    nudBrightness.Value = 50;
+                    cbxFancyGraphics.Checked = true;
+                    cbxVsync.Checked = true;
+                    cbxFullScreen.Checked = false;
+                    nudRenderDistance.Value = 16;
+                    nudFieldofView.Value = 64;
+                    cbxRayTracing.Checked = false;
+                    cbxUpscaling.Checked = false;
+                    trckbrMusicVolume.Value = 100;
+                    trckbrSoundVolume.Value = 100;
+                    nudTransparency.Value = 100;
+                    cbxShowCoordinates.Checked = false;
+                    cbxCameraPerspective.SelectedItem = "First-Person"; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading the application: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// This method saves the player profile data into a file.
+        /// </summary>
         private void btnSaveProfile_Click(object sender, EventArgs e)
         {
             try
@@ -64,7 +118,6 @@ namespace MineCraft
                 };
 
                 // Save the profile
-                Directory.CreateDirectory("Profiles");
                 string filePath = $"Profiles/{profile.ProfileName}.txt";
                 fileIOTools.SaveProfile(filePath, profile);
 
@@ -75,11 +128,10 @@ namespace MineCraft
                 MessageBox.Show($"Error saving profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         /// <summary>
-        /// This method is called when the "Load Profile" button is clicked. It loads the profile data from a file and populates the UI controls.
+        /// This method loads a player profile from a file and populates the form controls.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnLoadProfile_Click(object sender, EventArgs e)
         {
             try
@@ -127,11 +179,10 @@ namespace MineCraft
                 MessageBox.Show($"Error loading profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         /// <summary>
-        /// This method is called when the "Set Default" button is clicked. It sets the selected profile as the default profile.
+        /// This method sets the selected profile as the default profile.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSetDefault_Click(object sender, EventArgs e)
         {
             try
@@ -156,35 +207,32 @@ namespace MineCraft
                 MessageBox.Show($"Error setting default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         /// <summary>
-        /// 
+        /// This method populates the combo box with all available profiles from the Profiles directory.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mainFrm_Load(object sender, EventArgs e)
+        private void PopulateProfiles()
         {
             try
             {
-                        // Ensure the Profiles directory exists
-                        Directory.CreateDirectory("Profiles");
+                Directory.CreateDirectory("Profiles");
+                cbxProfile.Items.Clear();
 
-                        // Load the default profile if available
-                        string defaultFilePath = "Profiles/defaultProfile.txt";
-                        if (File.Exists(defaultFilePath))
-                        {
-                            string defaultProfile = File.ReadAllText(defaultFilePath);
-                            cbxProfile.SelectedItem = defaultProfile;
-                            btnLoadProfile_Click(sender, e);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error loading default profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                var files = Directory.GetFiles("Profiles", "*.txt");
+                foreach (var file in files)
+                {
+                    cbxProfile.Items.Add(Path.GetFileNameWithoutExtension(file));
                 }
 
-
-
+                if (cbxProfile.Items.Count > 0)
+                {
+                    cbxProfile.SelectedIndex = 0; // Select the first profile by default
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error populating profiles: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
-
