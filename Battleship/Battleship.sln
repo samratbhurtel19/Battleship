@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCraft", "..\MineCraft\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_w11a_MoreBindingInheritance", "..\Demo_w11a\Demo_w11a_MoreBindingInheritance.csproj", "{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportLeaugesApp", "..\SportLeaugesApp\SportLeaugesApp.csproj", "{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
