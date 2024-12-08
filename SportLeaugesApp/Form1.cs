@@ -18,11 +18,11 @@ namespace SportLeaugesApp
 {
     public partial class MainForm : Form
     {
-      
+
         public MainForm()
         {
             InitializeComponent();
-            this.cmbTeams.ValueMember = "teamid"; 
+            this.cmbTeams.ValueMember = "teamid";
 
 
         }
@@ -38,32 +38,25 @@ namespace SportLeaugesApp
 
         }
 
-        private void cmbTeams_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboTeams_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+
+            if (cmbTeams.SelectedValue != null)
             {
-                // Check if a team is selected and the value is valid
-                if (cmbTeams.SelectedValue != null && int.TryParse(cmbTeams.SelectedValue.ToString(), out int selectedTeamId))
-                {
-                    // Load filtered data using FillByTeamID
-                    this.playersTableAdapter.FillByteamID(this.sportleaguesDataSet.players, selectedTeamId);
-                    dgvPlayers.DataSource = null; // Clear existing data
-                    dgvPlayers.DataSource = this.sportleaguesDataSet.players; // Bind new filtered data
-                }
-                else
-                {
-                    MessageBox.Show("Please select a valid team.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                int selectedTeamId = Convert.ToInt32(cmbTeams.SelectedValue);
+
+
+                playersTableAdapter.FillByteamID(sportleaguesDataSet.players, selectedTeamId);
+                dgvPlayers.DataSource = sportleaguesDataSet.players;
             }
-            catch (Exception ex)
+            else
             {
-                // Handle any runtime exceptions
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a valid team.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
     }
 }
 
 
+    

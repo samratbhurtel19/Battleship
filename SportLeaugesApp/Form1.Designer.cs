@@ -44,18 +44,22 @@
             this.teamsTableAdapter = new SportLeaugesApp.sportleaguesDataSetTableAdapters.teamsTableAdapter();
             this.playersTableAdapter = new SportLeaugesApp.sportleaguesDataSetTableAdapters.playersTableAdapter();
             this.dataTable1TableAdapter = new SportLeaugesApp.sportleaguesDataSetTableAdapters.DataTable1TableAdapter();
+            this.teamsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.teamsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportleaguesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbTeams
             // 
-            this.cmbTeams.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.teamsBindingSource, "teamid", true));
-            this.cmbTeams.DataSource = this.teamsBindingSource;
+            this.cmbTeams.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.teamsBindingSource, "teamname", true));
+            this.cmbTeams.DataSource = this.teamsBindingSource2;
             this.cmbTeams.DisplayMember = "teamname";
             this.cmbTeams.FormattingEnabled = true;
             this.cmbTeams.Location = new System.Drawing.Point(21, 92);
@@ -63,7 +67,6 @@
             this.cmbTeams.Size = new System.Drawing.Size(121, 24);
             this.cmbTeams.TabIndex = 0;
             this.cmbTeams.ValueMember = "teamid";
-            this.cmbTeams.SelectedIndexChanged += new System.EventHandler(this.cmbTeams_SelectedIndexChanged);
             // 
             // teamsBindingSource
             // 
@@ -157,6 +160,16 @@
             // 
             this.dataTable1TableAdapter.ClearBeforeFill = true;
             // 
+            // teamsBindingSource1
+            // 
+            this.teamsBindingSource1.DataMember = "teams";
+            this.teamsBindingSource1.DataSource = this.sportleaguesDataSet;
+            // 
+            // teamsBindingSource2
+            // 
+            this.teamsBindingSource2.DataMember = "teams";
+            this.teamsBindingSource2.DataSource = this.sportleaguesDataSet;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -175,6 +188,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +212,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn regnumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jerseynumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn isactiveDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource teamsBindingSource1;
+        private System.Windows.Forms.BindingSource teamsBindingSource2;
     }
 }
 
