@@ -71,10 +71,13 @@ namespace VideoGameReviews
             Application.Exit(); // Exit the application
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnRegister_Click_1(object sender, EventArgs e)
         {
             frmRegistration registrationForm = new frmRegistration();
             registrationForm.ShowDialog();
+
+            // Close the current form
+            this.Close();
         }
     }
 }

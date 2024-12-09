@@ -6,41 +6,40 @@ namespace VideoGameReviews
 {
     public partial class frmMain : Form
     {
-        private int LoggedInUserID; // To store the logged-in user ID
+        private int LoggedInUserID;
 
-        public frmMain(int userID)
+        public frmMain(int loggedInUserID)
         {
             InitializeComponent();
-            LoggedInUserID = userID;
+            LoggedInUserID = loggedInUserID;
+            LoadGames();
         }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                // Display logged-in user information
-                User loggedInUser = User.GetByID(LoggedInUserID);
-                if (loggedInUser != null)
-                {
-                    lblStatus.Text = $"Logged in as: {loggedInUser.FirstName} {loggedInUser.LastName}";
-                }
-
-                // Load games into DataGridView
-                LoadGames();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error initializing the form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void LoadGames()
         {
             try
             {
                 Game.FillGames();
-                dgvGame.DataSource = null; // Reset data source
-                dgvGame.DataSource = Game.Games; // Bind the Games list
+
+                // Clear existing columns
+                dgvGame.Columns.Clear();
+                dgvGame.AutoGenerateColumns = false;
+
+                // Define columns
+                dgvGame.Columns.Add("GameID", "Game ID");
+                dgvGame.Columns["GameID"].DataPropertyName = "GameID";
+                dgvGame.Columns["GameID"].Visible = false; // Hide GameID column
+
+                dgvGame.Columns.Add("Title", "Title");
+                dgvGame.Columns["Title"].DataPropertyName = "Title";
+
+                dgvGame.Columns.Add("Genre", "Genre");
+                dgvGame.Columns["Genre"].DataPropertyName = "Genre";
+
+                dgvGame.Columns.Add("ReleaseDate", "Release Date");
+                dgvGame.Columns["ReleaseDate"].DataPropertyName = "ReleaseDate";
+
+                // Bind data
+                dgvGame.DataSource = Game.Games;
             }
             catch (Exception ex)
             {
@@ -48,26 +47,25 @@ namespace VideoGameReviews
             }
         }
 
+
         private void LoadReviews(int gameID)
         {
             try
             {
+                // Filter reviews based on the selected GameID
                 Review.FillReviews(gameID);
-                dgvReviews.DataSource = null; // Reset data source
-                dgvReviews.DataSource = Review.Reviews; // Bind the Reviews list
+
+                // Bind the filtered reviews to the second DataGridView
+                dgvReviews.DataSource = null; // Clear the existing data source
+                dgvReviews.DataSource = Review.Reviews;
+
+                // Optionally, hide unnecessary columns (like ReviewID)
+                dgvReviews.Columns["ReviewID"].Visible = false;
+                dgvReviews.Columns["GameID"].Visible = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading reviews: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dgvGames_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvGame.SelectedRows.Count > 0)
-            {
-                int selectedGameID = (int)dgvGame.SelectedRows[0].Cells["GameID"].Value;
-                LoadReviews(selectedGameID); // Load reviews for the selected game
+                MessageBox.Show($"Error displaying reviews: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -79,20 +77,18 @@ namespace VideoGameReviews
 
                 try
                 {
-                    // Create a new review object
                     Review newReview = new Review
                     {
                         GameID = selectedGameID,
                         ReviewerID = LoggedInUserID,
+                        Rating = int.Parse(nudRating.Text),
                         ReviewText = txtReview.Text,
                         ReviewDate = DateTime.Now
                     };
 
-                    // Insert the review into the database
                     newReview.Insert();
                     MessageBox.Show("Review added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Refresh the reviews
                     LoadReviews(selectedGameID);
                 }
                 catch (Exception ex)
@@ -110,11 +106,9 @@ namespace VideoGameReviews
 
                 try
                 {
-                    // Delete the selected review
                     Review.Delete(selectedReviewID);
                     MessageBox.Show("Review deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Refresh the reviews
                     if (dgvGame.SelectedRows.Count > 0)
                     {
                         int selectedGameID = (int)dgvGame.SelectedRows[0].Cells["GameID"].Value;
@@ -130,22 +124,40 @@ namespace VideoGameReviews
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Logout and return to login form
+            this.Close();
             frmLogin loginForm = new frmLogin();
             loginForm.Show();
-            this.Close();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Exit the application
             Application.Exit();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
-            // Show application information
-            MessageBox.Show("Video Game Reviews System\nVersion 1.0\nBy COSC2100", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // TODO: This line of code loads data into the 'videoGameReviewsDataSet1.Reviews' table. You can move, or remove it, as needed.
+            this.reviewsTableAdapter.Fill(this.videoGameReviewsDataSet1.Reviews);
+
+        }
+
+        private void dgvGame_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvGame.SelectedRows.Count > 0)
+                {
+                    // Get the selected GameID
+                    int selectedGameID = (int)dgvGame.SelectedRows[0].Cells["GameID"].Value;
+
+                    // Load reviews for the selected GameID
+                    LoadReviews(selectedGameID);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading reviews: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

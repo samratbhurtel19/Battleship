@@ -33,11 +33,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.txtFullName = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPasskey = new System.Windows.Forms.TextBox();
+            this.txtConfirmPasskey = new System.Windows.Forms.TextBox();
+            this.btnBackToLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -78,60 +79,73 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(223, 275);
+            this.button1.Location = new System.Drawing.Point(177, 274);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Register";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Location = new System.Drawing.Point(373, 274);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(315, 274);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // textBox1
+            // txtFullName
             // 
-            this.textBox1.Location = new System.Drawing.Point(290, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 6;
+            this.txtFullName.Location = new System.Drawing.Point(290, 80);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(100, 22);
+            this.txtFullName.TabIndex = 6;
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(290, 125);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtEmail.Location = new System.Drawing.Point(290, 125);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 22);
+            this.txtEmail.TabIndex = 7;
             // 
-            // textBox3
+            // txtPasskey
             // 
-            this.textBox3.Location = new System.Drawing.Point(290, 169);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 8;
+            this.txtPasskey.Location = new System.Drawing.Point(290, 169);
+            this.txtPasskey.Name = "txtPasskey";
+            this.txtPasskey.Size = new System.Drawing.Size(100, 22);
+            this.txtPasskey.TabIndex = 8;
             // 
-            // textBox4
+            // txtConfirmPasskey
             // 
-            this.textBox4.Location = new System.Drawing.Point(290, 210);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtConfirmPasskey.Location = new System.Drawing.Point(290, 210);
+            this.txtConfirmPasskey.Name = "txtConfirmPasskey";
+            this.txtConfirmPasskey.Size = new System.Drawing.Size(100, 22);
+            this.txtConfirmPasskey.TabIndex = 9;
+            // 
+            // btnBackToLogin
+            // 
+            this.btnBackToLogin.Location = new System.Drawing.Point(463, 273);
+            this.btnBackToLogin.Name = "btnBackToLogin";
+            this.btnBackToLogin.Size = new System.Drawing.Size(109, 23);
+            this.btnBackToLogin.TabIndex = 10;
+            this.btnBackToLogin.Text = "Back to login";
+            this.btnBackToLogin.UseVisualStyleBackColor = true;
+            this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnBackToLogin);
+            this.Controls.Add(this.txtConfirmPasskey);
+            this.Controls.Add(this.txtPasskey);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtFullName);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -152,10 +166,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtPasskey;
+        private System.Windows.Forms.TextBox txtConfirmPasskey;
+        private System.Windows.Forms.Button btnBackToLogin;
     }
 }
