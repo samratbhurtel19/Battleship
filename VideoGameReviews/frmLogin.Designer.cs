@@ -32,6 +32,8 @@
             this.lblPasskey = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPasskey = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -66,11 +68,33 @@
             this.txtPasskey.Size = new System.Drawing.Size(100, 22);
             this.txtPasskey.TabIndex = 3;
             // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(216, 297);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(353, 296);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPasskey);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblPasskey);
@@ -80,6 +104,9 @@
             this.Text = "Login Form";
             this.ResumeLayout(false);
             this.PerformLayout();
+            
+            
+
 
         }
 
@@ -89,6 +116,10 @@
         private System.Windows.Forms.Label lblPasskey;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPasskey;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnCancel;
+
+
+        }
     }
-}
 
