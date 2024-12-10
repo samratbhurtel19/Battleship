@@ -147,9 +147,10 @@
             this.txtReview.Name = "txtReview";
             this.txtReview.Size = new System.Drawing.Size(320, 22);
             this.txtReview.TabIndex = 5;
-            // 
+
             // dgvReviews
-            // 
+            this.dgvReviews = new System.Windows.Forms.DataGridView();
+            this.dgvReviews.AutoGenerateColumns = true;
             this.dgvReviews.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReviews.Location = new System.Drawing.Point(560, 66);
             this.dgvReviews.Name = "dgvReviews";
@@ -157,6 +158,8 @@
             this.dgvReviews.RowTemplate.Height = 24;
             this.dgvReviews.Size = new System.Drawing.Size(563, 219);
             this.dgvReviews.TabIndex = 6;
+
+
             // 
             // btnAdd
             // 

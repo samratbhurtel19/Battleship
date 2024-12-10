@@ -62,24 +62,32 @@ namespace VideoGameReviews
             }
         }
 
-        // Load reviews for a specific game
         private void LoadReviews(int gameID)
         {
             try
             {
+                // Fetch reviews for the selected game
                 Review.FillReviews(gameID);
-                dgvReviews.DataSource = null; // Clear existing data
+
+                // Bind the reviews to the DataGridView
+                dgvReviews.DataSource = null; // Clear any previous data
                 dgvReviews.DataSource = Review.Reviews;
 
-                // Adjust columns
-                dgvReviews.AutoGenerateColumns = true;
-                if (dgvReviews.Columns.Contains("ReviewID")) dgvReviews.Columns["ReviewID"].Visible = false;
-                if (dgvReviews.Columns.Contains("GameID")) dgvReviews.Columns["GameID"].Visible = false;
-                if (dgvReviews.Columns.Contains("ReviewerID")) dgvReviews.Columns["ReviewerID"].Visible = false;
+                // Debugging: Log review data
+                foreach (var review in Review.Reviews)
+                {
+                    Console.WriteLine($"ReviewID: {review.ReviewID}, Rating: {review.Rating}, Text: {review.ReviewText}");
+                }
 
-                if (dgvReviews.Columns.Contains("Rating")) dgvReviews.Columns["Rating"].HeaderText = "Rating";
-                if (dgvReviews.Columns.Contains("ReviewText")) dgvReviews.Columns["ReviewText"].HeaderText = "Review";
-                if (dgvReviews.Columns.Contains("ReviewDate")) dgvReviews.Columns["ReviewDate"].HeaderText = "Date";
+                // Adjust column visibility and headers
+                dgvReviews.AutoGenerateColumns = true;
+                if (dgvReviews.Columns["ReviewID"] != null) dgvReviews.Columns["ReviewID"].Visible = false;
+                if (dgvReviews.Columns["GameID"] != null) dgvReviews.Columns["GameID"].Visible = false;
+                if (dgvReviews.Columns["ReviewerID"] != null) dgvReviews.Columns["ReviewerID"].Visible = false;
+
+                if (dgvReviews.Columns["Rating"] != null) dgvReviews.Columns["Rating"].HeaderText = "Rating";
+                if (dgvReviews.Columns["ReviewText"] != null) dgvReviews.Columns["ReviewText"].HeaderText = "Review";
+                if (dgvReviews.Columns["ReviewDate"] != null) dgvReviews.Columns["ReviewDate"].HeaderText = "Date";
             }
             catch (Exception ex)
             {
@@ -95,14 +103,16 @@ namespace VideoGameReviews
                 if (dgvGame.SelectedRows.Count > 0)
                 {
                     int selectedGameID = (int)dgvGame.SelectedRows[0].Cells["GameID"].Value;
+                    Console.WriteLine($"Selected GameID: {selectedGameID}"); // Debugging
                     LoadReviews(selectedGameID);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading reviews for selected game: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error selecting game: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         // Add a new review
         private void btnAdd_Click_1(object sender, EventArgs e)

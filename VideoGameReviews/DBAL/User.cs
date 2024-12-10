@@ -43,6 +43,10 @@ namespace VideoGameReviews.DBAL
                 return null;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public void Insert()
         {
             try
