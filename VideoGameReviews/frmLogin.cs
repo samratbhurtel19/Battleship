@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using VideoGameReviews.DBAL;
 
@@ -10,55 +9,49 @@ namespace VideoGameReviews
         public frmLogin()
         {
             InitializeComponent();
-            this.ControlBox = false; // Disable top control box
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            frmRegistration registrationForm = new frmRegistration();
+            registrationForm.Show();
+            this.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // Validate input
-            string email = txtEmail.Text.Trim();
-            if (string.IsNullOrEmpty(email))
-            {
-                MessageBox.Show("Please enter your email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!int.TryParse(txtPasskey.Text.Trim(), out int passKey) || txtPasskey.Text.Length != 4)
-            {
-                MessageBox.Show("Passkey must be a 4-digit number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             try
             {
-                // Connect to database and validate credentials
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.VideoGameReviewsConnectionString))
+                // Validate input
+                if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPasskey.Text))
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT UserID FROM Users WHERE Email = @Email AND PassKey = @PassKey", conn);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@PassKey", passKey);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != null)
-                    {
-                        int userID = (int)result;
-
-                        // Store UserID for session tracking
-                        MessageBox.Show("Login Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Navigate to the main form
-                        frmMain mainForm = new frmMain(userID);
-                        mainForm.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid email or passkey. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("Email and Passkey cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                if (!int.TryParse(txtPasskey.Text, out int passkey) || txtPasskey.Text.Length != 4)
+                {
+                    MessageBox.Show("Passkey must be a 4-digit number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Fetch the user from the database
+                var user = User.GetUser(txtEmail.Text.Trim(), passkey);
+                if (user == null)
+                {
+                    MessageBox.Show("Invalid email or passkey.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Navigate to the main form
+                frmMain mainForm = new frmMain
+                {
+                    LoggedInUserID = user.UserID,
+                    LoggedInUserName = user.FirstName + " " + user.LastName
+                };
+
+                mainForm.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -68,16 +61,8 @@ namespace VideoGameReviews
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Application.Exit(); // Exit the application
-        }
-
-        private void btnRegister_Click_1(object sender, EventArgs e)
-        {
-            frmRegistration registrationForm = new frmRegistration();
-            registrationForm.ShowDialog();
-
-            // Close the current form
-            this.Close();
+            // Close the application
+            Application.Exit();
         }
     }
 }

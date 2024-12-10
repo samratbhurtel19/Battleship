@@ -13,16 +13,7 @@ namespace VideoGameReviews.DBAL
         public string Genre { get; set; }
         public DateTime ReleaseDate { get; set; }
 
-        public Game() { }
-
-        public Game(int gameID, string title, string genre, DateTime releaseDate)
-        {
-            GameID = gameID;
-            Title = title;
-            Genre = genre;
-            ReleaseDate = releaseDate;
-        }
-
+        // Fetch all games from the database
         public static void FillGames()
         {
             Games.Clear();
@@ -33,12 +24,13 @@ namespace VideoGameReviews.DBAL
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Games.Add(new Game(
-                        (int)reader["GameID"],
-                        reader["Title"].ToString(),
-                        reader["Genre"].ToString(),
-                        (DateTime)reader["ReleaseDate"]
-                    ));
+                    Games.Add(new Game
+                    {
+                        GameID = (int)reader["GameID"],
+                        Title = reader["Title"].ToString(),
+                        Genre = reader["Genre"].ToString(),
+                        ReleaseDate = (DateTime)reader["ReleaseDate"]
+                    });
                 }
             }
         }

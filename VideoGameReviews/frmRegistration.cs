@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using VideoGameReviews.DBAL;
 
@@ -11,78 +12,57 @@ namespace VideoGameReviews
             InitializeComponent();
         }
 
+        // Event triggered when the Register button is clicked
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtPasskey.Text != txtConfirmPasskey.Text)
-            {
-                MessageBox.Show("Passkey and Confirm Passkey must match.");
-                return;
-            }
-
-            User newUser = new User
-            {
-                UserID = GenerateNewUserID(), // Implement logic to generate unique UserID
-                FirstName = txtFullName.Text,
-                LastName = txtEmail.Text,
-                Email = txtPasskey.Text,
-                PassKey = int.Parse(txtConfirmPasskey.Text)
-            };
-
-            newUser.Insert();
-            MessageBox.Show("Registration successful!");
-            this.Close();
-        }
-
-        private int GenerateNewUserID()
-        {
-            return new Random().Next(1000, 9999); // Simple UserID generator; replace with proper logic
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Step 1: Validate Input
-            string fullName = txtFullName.Text.Trim();
-            string email = txtEmail.Text.Trim();
-            string passkeyText = txtPasskey.Text.Trim();
-            string confirmPasskeyText = txtConfirmPasskey.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(email) ||
-                string.IsNullOrWhiteSpace(passkeyText) || string.IsNullOrWhiteSpace(confirmPasskeyText))
-            {
-                MessageBox.Show("All fields are required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!int.TryParse(passkeyText, out int passkey) || passkey < 1000 || passkey > 9999)
-            {
-                MessageBox.Show("Passkey must be a 4-digit number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (passkeyText != confirmPasskeyText)
-            {
-                MessageBox.Show("Passkey and Confirm Passkey must match.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Step 2: Create and Insert the User
             try
             {
+                // Input validations
+                if (string.IsNullOrWhiteSpace(txtFullName.Text))
+                {
+                    MessageBox.Show("Full Name cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtEmail.Text))
+                {
+                    MessageBox.Show("Email cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtPasskey.Text) || string.IsNullOrWhiteSpace(txtConfirmPasskey.Text))
+                {
+                    MessageBox.Show("Passkey fields cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtPasskey.Text, out int passkey) || passkey < 1000 || passkey > 9999)
+                {
+                    MessageBox.Show("Passkey must be a 4-digit number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (txtPasskey.Text != txtConfirmPasskey.Text)
+                {
+                    MessageBox.Show("Passkey and Confirm Passkey must match.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Create a new user object
                 User newUser = new User
                 {
-                    UserID = GenerateNewUserID(), // You can implement this logic to generate a unique UserID
-                    FirstName = fullName.Split(' ')[0], // Assuming the first name is the first word
-                    LastName = fullName.Split(' ').Length > 1 ? fullName.Split(' ')[1] : "", // Optional last name
-                    Email = email,
+                    UserID = GenerateNewUserID(), // Generate a unique UserID
+                    FirstName = GetFirstName(txtFullName.Text),
+                    LastName = GetLastName(txtFullName.Text),
+                    Email = txtEmail.Text.Trim(),
                     PassKey = passkey
                 };
 
+                // Insert the new user into the database
                 newUser.Insert();
-
-                // Step 3: Provide Feedback and Close the Form
                 MessageBox.Show("Registration successful! You can now log in.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Navigate back to Login Form
+                // Navigate back to the Login Form
                 frmLogin loginForm = new frmLogin();
                 loginForm.Show();
                 this.Close();
@@ -93,36 +73,44 @@ namespace VideoGameReviews
             }
         }
 
+        // Helper method to generate a unique UserID
+        private int GenerateNewUserID()
+        {
+            return new Random().Next(1000, 9999); // Replace with actual unique UserID generation logic
+        }
+
+        // Helper method to extract first name from full name
+        private string GetFirstName(string fullName)
+        {
+            var nameParts = fullName.Split(' ');
+            return nameParts.Length > 0 ? nameParts[0] : fullName;
+        }
+
+        // Helper method to extract last name from full name
+        private string GetLastName(string fullName)
+        {
+            var nameParts = fullName.Split(' ');
+            return nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty;
+        }
+
+        // Event triggered when the Cancel button is clicked
         private void btnCancel_Click(object sender, EventArgs e)
         {
-           
-          // Confirm with the user before closing the form
-          var result = MessageBox.Show("Are you sure you want to cancel registration?",
-          "Cancel Confirmation",
-          MessageBoxButtons.YesNo,
-          MessageBoxIcon.Question);
+            var result = MessageBox.Show("Are you sure you want to cancel registration?", "Cancel Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
-                {
-                    // Close the form
-                    this.Close();
-                }
-            
-
+            if (result == DialogResult.Yes)
+            {
+                // Close the form
+                this.Close();
+            }
         }
 
+        // Event triggered when Back to Login button is clicked
         private void btnBackToLogin_Click(object sender, EventArgs e)
         {
-            
-                // Open the Login Form
-                frmLogin loginForm = new frmLogin();
-                loginForm.Show();
-
-                // Close the current form
-                this.Close();
-            
-
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show();
+            this.Close();
         }
     }
-    
 }

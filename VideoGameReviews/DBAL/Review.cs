@@ -15,39 +15,32 @@ namespace VideoGameReviews.DBAL
         public string ReviewText { get; set; }
         public DateTime ReviewDate { get; set; }
 
-        public Review() { }
-
-        public Review(int reviewID, int gameID, int reviewerID, int rating, string reviewText, DateTime reviewDate)
-        {
-            ReviewID = reviewID;
-            GameID = gameID;
-            ReviewerID = reviewerID;
-            Rating = rating;
-            ReviewText = reviewText;
-            ReviewDate = reviewDate;
-        }
-
+        // Fetch all reviews for a specific game
         public static void FillReviews(int gameID)
         {
             Reviews.Clear();
             using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.VideoGameReviewsConnectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Reviews", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Reviews WHERE GameID = @GameID", conn);
+                cmd.Parameters.AddWithValue("@GameID", gameID);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Reviews.Add(new Review(
-                        (int)reader["ReviewID"],
-                        (int)reader["GameID"],
-                        (int)reader["ReviewerID"],
-                        (int)reader["Rating"],
-                        reader["ReviewText"].ToString(),
-                        (DateTime)reader["ReviewDate"]
-                    ));
+                    Reviews.Add(new Review
+                    {
+                        ReviewID = (int)reader["ReviewID"],
+                        GameID = (int)reader["GameID"],
+                        ReviewerID = (int)reader["ReviewerID"],
+                        Rating = (int)reader["Rating"],
+                        ReviewText = reader["ReviewText"].ToString(),
+                        ReviewDate = (DateTime)reader["ReviewDate"]
+                    });
                 }
             }
         }
+
+        // Insert a new review
         public void Insert()
         {
             using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.VideoGameReviewsConnectionString))
@@ -56,7 +49,6 @@ namespace VideoGameReviews.DBAL
                 SqlCommand cmd = new SqlCommand("spInsertNewReview", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                // Pass parameters to the stored procedure
                 cmd.Parameters.AddWithValue("@ReviewID", ReviewID);
                 cmd.Parameters.AddWithValue("@GameID", GameID);
                 cmd.Parameters.AddWithValue("@UserID", ReviewerID);
@@ -64,10 +56,11 @@ namespace VideoGameReviews.DBAL
                 cmd.Parameters.AddWithValue("@ReviewText", ReviewText);
                 cmd.Parameters.AddWithValue("@ReviewDate", ReviewDate);
 
-                // Execute the query
                 cmd.ExecuteNonQuery();
             }
         }
+
+        // Delete a review
         public static void Delete(int reviewID)
         {
             using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.VideoGameReviewsConnectionString))
@@ -80,6 +73,5 @@ namespace VideoGameReviews.DBAL
                 cmd.ExecuteNonQuery();
             }
         }
-
     }
 }
