@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024-12-09
+// Description : Registration form for the application
+// Title : frmRegistration.cs
+// Purpose : To create a registration form for the application
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using VideoGameReviews.DBAL;

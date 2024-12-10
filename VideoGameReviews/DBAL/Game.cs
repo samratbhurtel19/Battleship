@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024-12-05
+// Purpose : To create a class for the game
+// Title : Game.cs
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 

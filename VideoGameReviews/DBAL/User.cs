@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024-12-05
+// Description : User class for the application
+// Title : User.cs
+// Purpose: This file contains the User class which is used to represent a user in the database.
+// It also contains the GetUser method which is used to fetch a user by email and passkey.
+// It also contains the Insert method which is used to insert a new user into the database.
+using System;
 using System.Data.SqlClient;
 
 namespace VideoGameReviews.DBAL

@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024-12-09
+// Description : Login form for the application
+// Title : frmLogin.cs
+using System;
 using System.Windows.Forms;
 using VideoGameReviews.DBAL;
 

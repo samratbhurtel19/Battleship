@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024-12-09
+// Description : Main form for the application
+// Title : frmMain.cs
+// Purpose: Main form for the application. Displays games and reviews, and allows users to add and delete reviews.
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using VideoGameReviews.DBAL;
