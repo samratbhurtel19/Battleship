@@ -38,42 +38,31 @@ namespace VideoGameReviews.DBAL
         // Static method to fetch reviews for a specific game
         public static void FillReviews(int gameID)
         {
-            try
+            Reviews.Clear();
+            using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.VideoGameReviewsConnectionString))
             {
-                Reviews.Clear(); // Clear the existing reviews
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Reviews WHERE GameID = @GameID", conn);
+                cmd.Parameters.AddWithValue("@GameID", gameID);
 
-                // Open a database connection
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.VideoGameReviewsConnectionString))
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Reviews WHERE GameID = @GameID", conn);
-                    cmd.Parameters.AddWithValue("@GameID", gameID);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+                        Reviews.Add(new Review
                         {
-                            Reviews.Add(new Review(
-                                (int)reader["ReviewID"],
-                                (int)reader["GameID"],
-                                (int)reader["ReviewerID"],
-                                (int)reader["Rating"],
-                                reader["ReviewText"].ToString(),
-                                (DateTime)reader["ReviewDate"]
-                            ));
-                        }
+                            ReviewID = (int)reader["ReviewID"],
+                            GameID = (int)reader["GameID"],
+                            ReviewerID = (int)reader["ReviewerID"],
+                            Rating = (int)reader["Rating"],
+                            ReviewText = reader["ReviewText"].ToString(),
+                            ReviewDate = (DateTime)reader["ReviewDate"]
+                        });
                     }
                 }
-
-                // Debugging: Log the fetched reviews
-                Console.WriteLine($"Fetched {Reviews.Count} reviews for GameID {gameID}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in FillReviews: {ex.Message}");
-                throw;
             }
         }
+
 
 
         // Method to insert a new review into the database
@@ -85,7 +74,10 @@ namespace VideoGameReviews.DBAL
                 SqlCommand cmd = new SqlCommand("spInsertNewReview", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@ReviewID", ReviewID);
+                // Generate a unique ReviewID (use a database sequence or logic here)
+                ReviewID = new Random().Next(1000, 9999); // Replace with proper logic
+
+                cmd.Parameters.AddWithValue("@ReviewID", ReviewID); // Explicitly set ReviewID
                 cmd.Parameters.AddWithValue("@GameID", GameID);
                 cmd.Parameters.AddWithValue("@UserID", ReviewerID);
                 cmd.Parameters.AddWithValue("@Rating", Rating);
@@ -95,6 +87,8 @@ namespace VideoGameReviews.DBAL
                 cmd.ExecuteNonQuery();
             }
         }
+
+
 
         // Static method to delete a review
         public static void Delete(int reviewID)

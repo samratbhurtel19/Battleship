@@ -107,7 +107,7 @@ namespace VideoGameReviews
             if (result == DialogResult.Yes)
             {
                 // Close the form
-                this.Close();
+                Application.Exit();
             }
         }
 
@@ -118,5 +118,6 @@ namespace VideoGameReviews
             loginForm.Show();
             this.Close();
         }
+
     }
 }

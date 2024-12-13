@@ -7,15 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship", "Battleship.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dunegons and Dragon", "..\Dunegons and Dragon\Dunegons and Dragon.csproj", "{4BBC89E6-55DC-4B67-A118-9BE50FC5C197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week_10_Demo", "..\Week_10_Demo\Week_10_Demo.csproj", "{4B5C5080-CC39-4C1A-AD4C-5A39257A17CC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCraft", "..\MineCraft\MineCraft.csproj", "{B7C9C496-9A2A-4A29-AED1-AC571F2410A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_w11a_MoreBindingInheritance", "..\Demo_w11a\Demo_w11a_MoreBindingInheritance.csproj", "{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportLeaugesApp", "..\SportLeaugesApp\SportLeaugesApp.csproj", "{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGameReviews", "..\VideoGameReviews\VideoGameReviews.csproj", "{1C671EA2-7E11-4ED3-A5A2-118778D904C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem", "..\LibraryManagementSystem\LibraryManagementSystem.csproj", "{DDF76581-8F5E-459A-8BF4-275AC7108D15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystemTestProject", "..\LibraryManagementSystemTestProject\LibraryManagementSystemTestProject.csproj", "{05069E3D-9414-4730-ABB7-FE035AFCCDAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,18 +31,10 @@ Global
 		{4BBC89E6-55DC-4B67-A118-9BE50FC5C197}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BBC89E6-55DC-4B67-A118-9BE50FC5C197}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BBC89E6-55DC-4B67-A118-9BE50FC5C197}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B5C5080-CC39-4C1A-AD4C-5A39257A17CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B5C5080-CC39-4C1A-AD4C-5A39257A17CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B5C5080-CC39-4C1A-AD4C-5A39257A17CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B5C5080-CC39-4C1A-AD4C-5A39257A17CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7C9C496-9A2A-4A29-AED1-AC571F2410A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7C9C496-9A2A-4A29-AED1-AC571F2410A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C9C496-9A2A-4A29-AED1-AC571F2410A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C9C496-9A2A-4A29-AED1-AC571F2410A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{964E7B68-1D2D-40F3-A55F-6CE95DCB00C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E88EAB18-1FAB-43C5-A959-9F8A7A7072A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +43,14 @@ Global
 		{1C671EA2-7E11-4ED3-A5A2-118778D904C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C671EA2-7E11-4ED3-A5A2-118778D904C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C671EA2-7E11-4ED3-A5A2-118778D904C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF76581-8F5E-459A-8BF4-275AC7108D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF76581-8F5E-459A-8BF4-275AC7108D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF76581-8F5E-459A-8BF4-275AC7108D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF76581-8F5E-459A-8BF4-275AC7108D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05069E3D-9414-4730-ABB7-FE035AFCCDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05069E3D-9414-4730-ABB7-FE035AFCCDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05069E3D-9414-4730-ABB7-FE035AFCCDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05069E3D-9414-4730-ABB7-FE035AFCCDAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
