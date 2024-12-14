@@ -41,7 +41,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefreshMembers = new System.Windows.Forms.Button();
             this.btnAddMembers = new System.Windows.Forms.Button();
-            this.btnExittoDashboard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,22 +157,11 @@
             this.btnAddMembers.UseVisualStyleBackColor = true;
             this.btnAddMembers.Click += new System.EventHandler(this.btnAddMembers_Click);
             // 
-            // btnExittoDashboard
-            // 
-            this.btnExittoDashboard.Location = new System.Drawing.Point(485, 397);
-            this.btnExittoDashboard.Name = "btnExittoDashboard";
-            this.btnExittoDashboard.Size = new System.Drawing.Size(162, 23);
-            this.btnExittoDashboard.TabIndex = 13;
-            this.btnExittoDashboard.Text = "Back to Dashboard";
-            this.btnExittoDashboard.UseVisualStyleBackColor = true;
-            this.btnExittoDashboard.Click += new System.EventHandler(this.btnExittoDashboard_Click);
-            // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 531);
-            this.Controls.Add(this.btnExittoDashboard);
             this.Controls.Add(this.btnAddMembers);
             this.Controls.Add(this.btnRefreshMembers);
             this.Controls.Add(this.btnDelete);
@@ -212,6 +200,5 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefreshMembers;
         private System.Windows.Forms.Button btnAddMembers;
-        private System.Windows.Forms.Button btnExittoDashboard;
     }
 }

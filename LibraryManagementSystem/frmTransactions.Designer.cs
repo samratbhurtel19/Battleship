@@ -148,7 +148,6 @@
             this.btnReturntoDashboard.TabIndex = 11;
             this.btnReturntoDashboard.Text = "Return to Dashboard";
             this.btnReturntoDashboard.UseVisualStyleBackColor = true;
-            this.btnReturntoDashboard.Click += new System.EventHandler(this.btnReturntoDashboard_Click);
             // 
             // frmTransactions
             // 

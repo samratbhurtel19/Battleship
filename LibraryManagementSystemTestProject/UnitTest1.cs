@@ -1,4 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024/12/13
+// title : UnitTest1.cs
+// Purpose: This file is used to test the methods in the LibraryManagementSystem project.
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using LibraryManagementSystem;
 using System.Linq;
@@ -8,6 +13,9 @@ namespace LibraryManagementSystemTestProject
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// This method tests the AddMember method in the Member class.
+        /// </summary>
         [TestMethod]
         public void Test_AddMember_ValidInput()
         {
@@ -27,7 +35,9 @@ namespace LibraryManagementSystemTestProject
             var addedMember = allMembers.Select($"Name = '{member.Name}' AND Email = '{member.Email}'").FirstOrDefault();
             Assert.IsNotNull(addedMember, "Member was not added successfully.");
         }
-
+        /// <summary>
+        /// This method tests the AddBook method in the Book class.
+        /// </summary>
 
         [TestMethod]
         public void Test_AddBook_ValidInput()
@@ -50,6 +60,9 @@ namespace LibraryManagementSystemTestProject
             var addedBook = allBooks.Select($"Title = '{book.Title}' AND Author = '{book.Author}'").FirstOrDefault();
             Assert.IsNotNull(addedBook, "Book was not added successfully.");
         }
+        /// <summary>
+        /// This method tests the DeleteBookByTitle method in the Book class.
+        /// </summary>
         [TestMethod]
         public void Test_DeleteBook_ValidTitle()
         {

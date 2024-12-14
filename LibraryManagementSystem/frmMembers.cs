@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Name: Samrat Jayanta Bhurtel
+// Student ID: 100949545
+// Date: 2024/12/13
+// Title: frmMembers.cs
+// Purpose: This file contains the code for the Members form. This form allows the user to view, add, and delete
+// members from the database. The form also contains validation for the inputs and a button to refresh the members list.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +21,14 @@ namespace LibraryManagementSystem
         public frmMembers()
         {
             InitializeComponent();
+            utility.AddStatusStrip(this);
+            utility.AddMenuStrip(this);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMembers_Load(object sender, EventArgs e)
         {
             LoadMembers();
@@ -33,7 +45,11 @@ namespace LibraryManagementSystem
                 MessageBox.Show($"Error while loading members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddMembers_Click(object sender, EventArgs e)
         {
             // Validate Name
@@ -122,8 +138,11 @@ namespace LibraryManagementSystem
             }
         }
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -160,17 +179,14 @@ namespace LibraryManagementSystem
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefreshMembers_Click(object sender, EventArgs e)
         {
             LoadMembers();
-        }
-
-        private void btnExittoDashboard_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            frmMain mainForm = new frmMain();
-            mainForm.Show();
         }
         private void ClearInputs()
         {

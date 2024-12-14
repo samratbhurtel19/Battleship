@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024/12/13
+// Title : Book.cs
+// Purpose: Contains the Book class and its methods to add, retrieve, and delete books from the database.
+// This class is used to manage books in the library. The methods in this class interact with the database
+// to perform the necessary operations.
+// References for the constructor, properties, and methods:https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/instance-constructors
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -14,7 +22,10 @@ public class Book
     public int YearPublished { get; set; }
     public int CopiesAvailable { get; set; }
 
-    // Method to Add a Book to the Database
+    /// <summary>
+    /// This method adds a book to the database.I learned the Connection.close() methods from the 
+    /// following link: https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqlconnection.close?view=sqlclient-dotnet-standard-5.2
+    /// </summary>
     public void AddBook()
     {
         string query = "INSERT INTO Books (Title, Author, Genre, YearPublished, CopiesAvailable) VALUES (@Title, @Author, @Genre, @YearPublished, @CopiesAvailable)";

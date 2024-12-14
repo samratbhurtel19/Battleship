@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024/12/13
+// Title : TransactionManager.cs
+// Purpose: This is the static class which contains methods to handle transactions such as borrowing and returning books.
+// It also contains a method to retrieve all transactions from the database. This class is used to manage transactions in the library.
+// The methods in this class interact with the database to perform the necessary operations.
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -33,7 +40,12 @@ public static class TransactionManager
         }
         connection.Close();
     }
-
+    /// <summary>
+    /// This method retrieves all transactions from the database.
+    /// I learned the Connection.close() methods from the 
+    /// following link: https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqlconnection.close?view=sqlclient-dotnet-standard-5.2
+    ///
+    /// <returns></returns>
     public static DataTable GetAllTransactions()
     {
         string query = "SELECT * FROM Transactions"; // Query to fetch all transactions
@@ -65,7 +77,11 @@ public static class TransactionManager
     }
 
 
-    // Method to Return a Book
+    /// <summary>
+    /// This method returns a book by updating the transaction record with the return date.
+    /// </summary>
+    /// <param name="transactionID"></param>
+    /// <param name="returnDate"></param>
     public static void ReturnBook(int transactionID, DateTime returnDate)
     {
         string query = @"

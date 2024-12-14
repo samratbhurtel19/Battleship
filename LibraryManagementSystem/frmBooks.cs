@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024/12/13
+// title : frmBooks.cs
+// Purpose: This file contains the code for the frmBooks form. This form is used to manage books in the library.
+// It allows the user to add, delete, and view books in the library.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,8 +22,14 @@ namespace LibraryManagementSystem
         public frmBooks()
         {
             InitializeComponent();
+            utility.AddStatusStrip(this);
+            utility.AddMenuStrip(this);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmBooks_Load(object sender, EventArgs e)
         {
             LoadBooks();
@@ -27,7 +39,11 @@ namespace LibraryManagementSystem
             DataTable booksTable = Book.GetAllBooks();
             dgvBooks.DataSource = booksTable;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddBooks_Click(object sender, EventArgs e)
         {
             try
@@ -57,7 +73,11 @@ namespace LibraryManagementSystem
           
             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
             try
@@ -94,18 +114,16 @@ namespace LibraryManagementSystem
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadBooks();
         }
 
-        private void btnBacktoDashBoard_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            frmMain mainForm = new frmMain();
-            mainForm.Show();
-        }
         private void ClearInputs()
         {
             txtTitle.Text = "";

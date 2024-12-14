@@ -43,7 +43,6 @@
             this.txtAvailableCopies = new System.Windows.Forms.TextBox();
             this.btnAddBooks = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnBacktoDashBoard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,22 +175,11 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // btnBacktoDashBoard
-            // 
-            this.btnBacktoDashBoard.Location = new System.Drawing.Point(634, 536);
-            this.btnBacktoDashBoard.Name = "btnBacktoDashBoard";
-            this.btnBacktoDashBoard.Size = new System.Drawing.Size(203, 23);
-            this.btnBacktoDashBoard.TabIndex = 15;
-            this.btnBacktoDashBoard.Text = "Back to Dashboard";
-            this.btnBacktoDashBoard.UseVisualStyleBackColor = true;
-            this.btnBacktoDashBoard.Click += new System.EventHandler(this.btnBacktoDashBoard_Click);
-            // 
             // frmBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 620);
-            this.Controls.Add(this.btnBacktoDashBoard);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAddBooks);
             this.Controls.Add(this.txtAvailableCopies);
@@ -234,6 +222,5 @@
         private System.Windows.Forms.TextBox txtAvailableCopies;
         private System.Windows.Forms.Button btnAddBooks;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnBacktoDashBoard;
     }
 }

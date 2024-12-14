@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024/12/13
+// title : frmMain.cs
+// Purpose: This file contains the main form of the application. It is the first form that is displayed
+// when the application is run. It contains buttons that allow the user to navigate to the Books, Members,
+// and Transactions forms.It also contains a button that allows the user to exit the application.
+// The form also contains a status strip that displays the current date and time.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +23,7 @@ namespace LibraryManagementSystem
         public frmMain()
         {
             InitializeComponent();
+            utility.AddStatusStrip(this);
         }
         /// <summary>
         /// 
@@ -49,7 +58,11 @@ namespace LibraryManagementSystem
             frmTransactions transactionsForm = new frmTransactions();
             transactionsForm.Show();
         }
-
+        /// <summary>
+        /// This method exits the application when the Exit button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

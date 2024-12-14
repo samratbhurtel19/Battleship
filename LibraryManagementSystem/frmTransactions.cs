@@ -1,6 +1,11 @@
 ﻿using LibraryManagementSystem.Properties;
 using System;
 using System.Collections.Generic;
+// Name : Samrat Jayanta Bhurtel
+// Student ID : 100949545
+// Date : 2024/12/13
+// title : frmTransactions.cs
+// Purpose: This form allows the user to borrow and return books
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -17,8 +22,14 @@ namespace LibraryManagementSystem
         public frmTransactions()
         {
             InitializeComponent();
+            utility.AddStatusStrip(this);
+            utility.AddMenuStrip(this);
         }
-
+        /// <summary>
+        /// This method loads the transactions when the form is loaded.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmTransactions_Load(object sender, EventArgs e)
         {
             LoadTransactions();
@@ -38,6 +49,11 @@ namespace LibraryManagementSystem
 
             }
         }
+        /// <summary>
+        /// This method validates the Member ID.
+        /// </summary>
+        /// <param name="memberID"></param>
+        /// <returns></returns>
         public static bool ValidateMemberID(int memberID)
         {
             string query = "SELECT COUNT(*) FROM Members WHERE MemberID = @MemberID";
@@ -62,7 +78,11 @@ namespace LibraryManagementSystem
                 return false;
             }
         }
-
+        /// <summary>
+        /// This method validates the Book ID.
+        /// </summary>
+        /// <param name="bookID"></param>
+        /// <returns></returns>
         public static bool ValidateBookID(int bookID)
         {
             string query = "SELECT COUNT(*) FROM Books WHERE BookID = @BookID";
@@ -87,7 +107,11 @@ namespace LibraryManagementSystem
                 return false;
             }
         }
-
+        /// <summary>
+        /// This method validates the Transaction ID.
+        /// </summary>
+        /// <param name="transactionID"></param>
+        /// <returns></returns>
         public static bool ValidateTransactionID(int transactionID)
         {
             string query = "SELECT COUNT(*) FROM Transactions WHERE TransactionID = @TransactionID";
@@ -112,6 +136,11 @@ namespace LibraryManagementSystem
                 return false;
             }
         }
+        /// <summary>
+        /// This method borrows a book.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBurrow_Click(object sender, EventArgs e)
         {
             try
@@ -143,7 +172,11 @@ namespace LibraryManagementSystem
                 MessageBox.Show($"Error while borrowing book: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// This method returns a book.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
             try
@@ -174,19 +207,19 @@ namespace LibraryManagementSystem
             }
         }
 
-
+        /// <summary>
+        /// This method refreshes the transactions list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadTransactions();
         }
 
-        private void btnReturntoDashboard_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            frmMain mainForm = new frmMain();
-            mainForm.Show();
-        }
-
+        /// <summary>
+        /// This method clears the input fields.
+        /// </summary>
         private void ClearInputs()
         {
             txtMemberID.Text = "";
